@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+    body { padding-top: 70px; }
+</style>
+
+{% include "navbar.html" %}
+
+<h4 class="center"></span></h4>
+<div class="card-wrapper" style="margin-top: 0%;">
+    <div class="card">
+      <h2 class="center" style="margin-bottom: 0%;margin-top:0%;">Search Books</h2>
+      <div class="row">
+        <div class="col-sm-8" style="margin-left: 0%;">
+            <br>
+      <input type="text" id="book_keyword" class="field" required>
+        </div>
+        <div class="col-sm-4" style="margin-left: 0%;">
+      <input type="submit" value="Search" id="search_button" class="btn btn-success">
+    </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container center">
+    <div class="row">
+      <div class="col-md-12">
+      </div>
+    </div>
+    <div class="row">
+      <div id="1" class="col-sm-4">
+
+      </div>
+      <div id="2" class="col-sm-4">
+
+      </div>
+      <div id="3" class="col-sm-4">
+
+    </div>
+    </div>
+    <div class="row">
+        <div id="4" class="col-sm-4">
+
+        </div>
+        <div id="5" class="col-sm-4">
+
+        </div>
+        <div id="6" class="col-sm-4">
+
+      </div>
+      </div>
+      <div class="row">
+        <div id="7" class="col-sm-4">
+
+        </div>
+        <div id="8" class="col-sm-4">
+
+        </div>
+        <div id="9" class="col-sm-4">
+
+      </div>
+      </div>
+      <div class="row">
+        <div id="10" class="col-sm-4">
+
+        </div>
+      </div>
+  </div>
+
+<div id="book_results" class="center">
+
+</div>
+
+
+<script src="/static/js/booksearchscript.js"></script>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+    body { padding-top: 100px; }
+</style>
+
+{% include "navbar.html" %}
+
+<div class="container center">
+<div class="center" style="margin-bottom: 0%;margin-top:0%;">
+    <h1 ><strong style="color:#57CBCC;"><a href="{{bookdata.infolink}}">{{bookdata.title}}</a></strong></h1>
+</div>
+
+<div class="row">
+<div class="col-md-12">
+    <br>
+    <img src="{{bookdata.image}}"  width="200" height="280" />
+    <br><br>
+    {%if bookdata.count>0%}
+    <h5 style="color:#31A745;">In Stock : {{bookdata.count}}</h5>
+    {%else%}
+    <h5 style="color:#B30707;">Out of Stock : {{bookdata.count}}</h5>
+    {%endif%}
+    <br><br>
+</div>
+</div>
+<br>
+<div class="row">
+<div class="col-sm-4" style="margin-left: 0%;">
+     <input type="number" id="addbook" placeholder="    Enter number of books " size="5">
+</div>
+
+<div class="col-sm-4" style="margin-left: 0%;">
+    <button class="center-align btn btn-success" id="add_button">Add Books</button>
+</div>
+
+<div class="col-sm-4" style="margin-left: 0%;">
+    <button class="center-align btn btn-success" id="remove_button">Remove Book</button>
+</div>
+
+</div>
+</div>
+
+<p id="book_id" class="d-none">{{id}}</p>
+<script src="/static/js/bookupdatescript.js"></script>
+
+{% endblock %}
