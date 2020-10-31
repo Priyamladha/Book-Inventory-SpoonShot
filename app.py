@@ -25,12 +25,14 @@ def home():
 
 @app.route('/inventory/')
 def inventory():
-  global inventory_books
-  inventory_books = list(db.books.find())
+  # global inventory_books
+  # inventory_books = list(db.books.find())
   return render_template('inventory.html')
 
 @app.route('/inventory/ajax/',methods=['GET'])
 def getinventory():
+  global inventory_books
+  inventory_books = list(db.books.find())
   return jsonify(list(inventory_books)), 200
 
 

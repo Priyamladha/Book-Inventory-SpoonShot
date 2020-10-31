@@ -7,7 +7,8 @@ function addbook(){
         type: "POST",
         data:data,
         success: function (resp) {
-            window.location.href = "/updatebook/"+id;
+            //window.location.href = "/updatebook/"+id;
+            window.location.replace("/inventory/");
         }
     });
 }
