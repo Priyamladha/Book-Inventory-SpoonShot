@@ -16,7 +16,8 @@ The project is build on flask framework as it supports python as a backend also 
 
 * Clone the project and cd into the project directory
 * Open terminal and type ```pip install -r requirements.txt```
-* Type ```flask run``` in the terminal
+* Set ```app.py``` to flask app using command ```export FLASK_APP=app.py```
+* Run ```flask run``` in the terminal
 * Open the Localhost link on your web browser
 
 ## Application
