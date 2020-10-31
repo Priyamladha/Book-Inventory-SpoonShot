@@ -2,25 +2,29 @@ from flask import Flask, render_template, session, redirect, jsonify, request, j
 import requests
 from functools import wraps
 import pymongo
-import urllib.parse
 from app import app, db
+
+# Global list to store temporary documents from mongodb
 inventory_books = []
 
+# Rendering Start Page
 @app.route('/')
 def home():
   return render_template('home.html')
 
+# Rendering Inventory page which show all the books currently in inventory
 @app.route('/inventory/')
 def inventory():
   return render_template('inventory.html')
 
+# Ajax call from javascript on inventory page to fetch all the documents in the database
 @app.route('/inventory/ajax/',methods=['GET'])
 def getinventory():
   global inventory_books
   inventory_books = list(db.books.find())
   return jsonify(list(inventory_books)), 200
 
-
+# Ajax call from javascript on book search page to check if a book exists in database or not
 @app.route('/checkbook/ajax/',methods=['POST'])
 def checkbookajax():
   id = request.form.get('id')
@@ -30,6 +34,7 @@ def checkbookajax():
   data = db.books.find_one(temp)
   return jsonify(data), 200
 
+# Ajax call from javascript on book search page to add a book in the database book inventory
 @app.route('/addbook/ajax/',methods=['POST'])
 def addbookajax():
   id = request.form.get('id')
@@ -41,6 +46,7 @@ def addbookajax():
       db.books.insert_one(temp)
   return jsonify(1), 200
 
+# Ajax call from javascript to remove a book in the database book inventory
 @app.route('/removebook/ajax/',methods=['POST'])
 def removebookajax():
   id = request.form.get('id')
@@ -48,11 +54,16 @@ def removebookajax():
   db.books.remove(temp)
   return jsonify(1), 200
 
+# Ajax call from javascript on update book page to update number of copies of a book id inside inventory
+# Redirects to updatebook route with id parameter
 @app.route('/updatebook',methods=['GET'])
 def updatebookajax():
   id = request.args.get('id')
   return redirect(url_for('updatebook', id=id))
 
+""" Api call is done using the book id and json data is fetched for the book id and a key-value pair variable
+ is created which stores book details which then is passed to html as a jinja object.
+"""
 @app.route('/updatebook/<id>',methods=['GET'])
 def updatebook(id):
   temp = { "_id": id}
@@ -71,6 +82,8 @@ def updatebook(id):
     }
   return render_template('updatebook.html',id=id,bookdata=bookdata)
 
+
+# Updates the number of copies for the particular book id
 @app.route('/addbooks/',methods=['POST'])
 def addbooks():
   id = request.form.get('id')
