@@ -14,14 +14,19 @@ The Application is Deployed on Heroku, Link for the same is [Book Inventory Mana
 
 * The project is build on flask framework which makes it easy to integrate it with mongodb and store and fetch data seamlessly.
 <br/>
+
 * Whenever a book title is searched for the page isn't reloaded to fetch the books for that title but instead Ajax is used beacause of which everything happens in backend and enhances the interface and the user experience.
 <br/>
+
 * Ajax calls have been used to fetch the json response from Google Books Api which is then displayed over the webpage in form of books.
 <br/>
+
 * Whenever a new book is added to the inventory it creates a new div on the inventory page for this book which stores all the display information which makes the webpage dynamic.
 <br/>
+
 * In search books, if a book is already present in inventory it will be displayed "Available" also if in stock or not which makes it easy for the user to distinguish whether if a book is present in inventory or not. Also, all the "Not Available" books have an add button and "Available" one's don't.
 <br/>
+
 * On update book page Jinja is used to display book information since the webpage is static in nature. Also, the page let's user edit number of copies of the book or remove the book.
 ## Instructions To Run
 
