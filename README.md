@@ -1,27 +1,49 @@
 # SpoonShot Book Inventory Management Assignment
-<!-- ## Assignment for SDE - Intern (Applications) [Link](https://summergeeks.in/static/assignments/summergeeks%202020%20-%20SDE%20Assignment.pdf)  -->
+
+The Application is Deployed on Heroku, Link for the same is [Book Inventory Management](https://spoonshot-bookinventory.herokuapp.com/)
 <br/>
 
 ## Assumptions
   
-1. When a book is searched it should display all the list of books and whether they are available in inventory or not. 
-2. Multiple books could be added from the list of books.
-3. A different page of book inventory should be there which lists all the books currently in inventory.
-4. It is assumed that when inventory is updated for an existing book it means we can add more number of copies or remove the book.
+* When a book is searched it should display all the list of books and whether they are available in inventory or not. 
+* Multiple books could be added from the list of searched title.
+* A different page of book inventory should be there which lists all the books currently in inventory.
+* It is assumed that when inventory is updated for an existing book it means we can edit number of copies or remove the book.
 
 ## Implementation
 
-The project is build on flask framework as it supports python as a backend also for database mongodb is used beacuse of it's nosql nature and javascript ajax calls are used so that everything happens in backend and user need not refresh the page.
+* The project is build on flask framework which makes it easy to integrate it with mongodb and store and fetch data seamlessly.
+<br/>
+* Whenever a book title is searched for the page isn't reloaded to fetch the books for that title but instead Ajax is used beacause of which everything happens in backend and enhances the interface and the user experience.
+<br/>
+* Ajax calls have been used to fetch the json response from Google Books Api which is then displayed over the webpage in form of books.
+<br/>
+* Whenever a new book is added to the inventory it creates a new div on the inventory page for this book which stores all the display information which makes the webpage dynamic.
+<br/>
+* In search books, if a book is already present in inventory it will be displayed "Available" also if in stock or not which makes it easy for the user to distinguish whether if a book is present in inventory or not. Also, all the "Not Available" books have an add button and "Available" one's don't.
+<br/>
+* On update book page Jinja is used to display book information since the webpage is static in nature. Also, the page let's user edit number of copies of the book or remove the book.
 ## Instructions To Run
 
-* Clone the project and cd into the project directory
-* Open terminal and type ```pip install -r requirements.txt```
-* Set ```app.py``` to flask app using command ```export FLASK_APP=app.py```
-* Run ```flask run``` in the terminal
-* Open the Localhost link on your web browser
+* Clone the project and change the working directory with command
+    ```
+    cd Book-Inventory-SpoonShot
+    ```
+* Open terminal and run
+    ```
+    pip install -r requirements.txt
+    ```
+* Then, run
+    
+    ```
+    export FLASK_APP=app.py
+    ```
+* Run the server with the command
+    ```
+    flask run
+    ```
+* Open the Localhost link - http://127.0.0.1:5000/ on your web browser
 
-## Application
-The application is Deployed on Heroku, Link for the same is [Book Inventory Management](https://spoonshot-bookinventory.herokuapp.com/)
 
 <!-- This is how the Application looks
 
