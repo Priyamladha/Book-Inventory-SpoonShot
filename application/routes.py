@@ -7,9 +7,14 @@ from app import app, db
 # Global list to store temporary documents from mongodb
 inventory_books = []
 
-# Rendering Start Page
+# Redirects to inventory route
 @app.route('/')
 def home():
+  return redirect('/inventory')
+
+# Rendering Start Page
+@app.route('/booksearch/')
+def booksearch():
   return render_template('home.html')
 
 # Rendering Inventory page which show all the books currently in inventory
@@ -89,9 +94,7 @@ def addbooks():
   id = request.form.get('id')
   num = request.form.get('num')
   temp = { "_id": id}
-  dbdata = db.books.find_one(temp)
   num = int(num)
-  num +=dbdata["count"]
   newvalues = { "$set": { "_id": id, "count": num } }
   db.books.update_one(temp, newvalues)
   return jsonify(),200

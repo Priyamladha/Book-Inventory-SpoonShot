@@ -27,7 +27,7 @@ function addbook(id){
         }
     });
 }
-function checkbook(id,elementid,titledata,imgdata,link,bookid){
+function checkbook(id,elementid,titledata,imgdata,link,bookid,idx){
     var data = 'id='+id;
     var checkk;
     $.ajax({
@@ -74,6 +74,9 @@ function checkbook(id,elementid,titledata,imgdata,link,bookid){
     
             if(!checkk[0])
                 addbtn.appendTo(elementid);
+            document.getElementById(idx).innerHTML += '<br>';
+            document.getElementById(idx).innerHTML += '<br>';
+            document.getElementById(idx).innerHTML += '<br>';
         }
     });
 }
@@ -95,7 +98,7 @@ function printresp(){
         var title = response.items[i].volumeInfo.title;
         var img = response.items[i].volumeInfo.imageLinks.thumbnail;
         var infolink = response.items[i].volumeInfo.infoLink
-        checkbook(id,elementid,title,img,infolink,id);
+        checkbook(id,elementid,title,img,infolink,id,idx);
     }
 
 }
