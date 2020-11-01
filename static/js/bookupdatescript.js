@@ -1,5 +1,9 @@
 function addbook(){
     var num = document.getElementById('addbook').value
+    if(num<0){
+        alert("Please Enter a Valid Number")
+    }
+    else{
     var id = document.getElementById('book_id').innerText
     var data = "id="+id+"&num="+num;
     $.ajax({
@@ -11,6 +15,7 @@ function addbook(){
             window.location.replace("/inventory/");
         }
     });
+    }
 }
 function removebook(){
     var id = document.getElementById('book_id').innerText

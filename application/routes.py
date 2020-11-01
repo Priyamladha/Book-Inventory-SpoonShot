@@ -95,6 +95,8 @@ def addbooks():
   num = request.form.get('num')
   temp = { "_id": id}
   num = int(num)
+  if(num<0):
+    num=0
   newvalues = { "$set": { "_id": id, "count": num } }
   db.books.update_one(temp, newvalues)
   return jsonify(),200
